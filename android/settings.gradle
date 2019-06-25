@@ -1,0 +1,3 @@
+rootProject.name = 'CitiesAppRN'
+
+include ':app'
