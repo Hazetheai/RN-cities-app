@@ -6,7 +6,6 @@ import {
   ScrollView,
   TouchableWithoutFeedback
 } from "react-native";
-import uuidV4 from "uuid/v4";
 import { colors } from "../theme";
 
 export default class Cities extends React.Component {
@@ -21,15 +20,16 @@ export default class Cities extends React.Component {
 
   viewCity = city => {
     this.props.navigation.navigate("City", { city });
+    console.log("City", city);
   };
 
   render() {
-    console.log("props:", this.props);
+    // console.log("props:", this.props);
     return (
       <ScrollView>
         <View>
           {this.props.screenProps.cities.map((city, view) => (
-            <View key={uuidV4}>
+            <View key={city.id}>
               <TouchableWithoutFeedback onPress={() => this.viewCity(city)}>
                 <View style={styles.cityContainer}>
                   <Text style={styles.city}>{city.city}</Text>

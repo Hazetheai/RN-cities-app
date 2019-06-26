@@ -45,8 +45,13 @@ export default class City extends React.Component {
     info: ""
   };
   render() {
+    const { city } = this.props.navigation.state.params;
+
     return (
-      <View>
+      <View style={{ flex: 1 }}>
+        {city.locations.map((location, index) => {
+          <View>{location.name}</View>;
+        })}
         <TextInput
           value={this.state.name}
           placeholder="Location Name"
@@ -59,10 +64,10 @@ export default class City extends React.Component {
           placeholder="Location Info"
           placeholderTextColor="white"
           onChangeText={val => this.onChangeText("info", val)}
-          style={(styles.input, styles.inputTwo)}
+          style={[styles.input, styles.inputTwo]}
         />
         <View style={styles.buttonContainer}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={this.addLocation}>
             <View style={styles.button}>
               <Text style={styles.buttonText}>Add Location</Text>
             </View>
@@ -83,7 +88,9 @@ const styles = StyleSheet.create({
     left: 0,
     color: "white"
   },
-  inputTwo: { bottom: 52 },
+  inputTwo: {
+    bottom: 52
+  },
   button: {
     backgroundColor: colors.primary,
     height: 50,

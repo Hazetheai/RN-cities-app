@@ -31,8 +31,9 @@ export default class App extends React.Component {
     try {
       const cities = this.state.cities;
       cities.push(city);
-      await AsyncStorage.setItem(key, JSON.stringify(cities))
-      .catch(error => console.log("Setting Error:", error));
+      await AsyncStorage.setItem(key, JSON.stringify(cities)).catch(error =>
+        console.log("Setting Error:", error)
+      );
       this.setState({ cities });
     } catch (e) {
       console.log("It's all gone to shit! Read more here ---> ", e);
