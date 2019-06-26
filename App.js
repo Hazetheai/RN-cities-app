@@ -40,13 +40,29 @@ export default class App extends React.Component {
     }
   };
 
-  addLocation = () => {};
+  addLocation = (location, city) => {
+    const index = this.state.cities.findIndex(item => item.id === city.id);
+
+    const chosenCity = this.state.cities[index];
+    chosenCity.locations.push(location);
+    const cities = [
+      ...this.state.cities.slice(0, index),
+      chosenCity,
+      ...this.state.cities.slice(index + 1)
+    ];
+    this.setState({ cities }, () => {
+      AsyncStorage.setItem(key, JSON.stringify(cities)).catch(error =>
+        console.log("Setting Error:", error)
+      );
+    });
+  };
   render() {
     return (
       <AppNavCont
         screenProps={{
           cities: this.state.cities,
-          addCity: this.addCity
+          addCity: this.addCity,
+          addLocation: this.addLocation
         }}
       />
     );

@@ -11,6 +11,7 @@ import {
 
 import { colors } from "../theme";
 import { white } from "ansi-colors";
+import CenterMessage from "../components/CenterMessage";
 
 export default class City extends React.Component {
   static navigationOptions = props => {
@@ -49,9 +50,13 @@ export default class City extends React.Component {
 
     return (
       <View style={{ flex: 1 }}>
-        {city.locations.map((location, index) => {
-          <View>{location.name}</View>;
-        })}
+        {!city.locations.length && <CenterMessage message="No Locations" />}
+        {city.locations.map((location, index) => (
+          <View style={styles.locationContainer}>
+            <Text style={styles.locationName}>{location.name}</Text>
+            <Text style={styles.locationInfo}>{location.info}</Text>
+          </View>
+        ))}
         <TextInput
           value={this.state.name}
           placeholder="Location Name"
@@ -98,5 +103,12 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   buttonContainer: { position: "absolute", bottom: 0, left: 0, width: "100%" },
-  buttonText: { color: "white", fontSize: 20 }
+  buttonText: { color: "white", fontSize: 20 },
+  locationContainer: {
+    padding: 10,
+    borderBottomColor: colors.primary,
+    borderBottomWidth: 2
+  },
+  locationName: { fontSize: 20 },
+  locationInfo: { color: "#c6c6d6" }
 });
