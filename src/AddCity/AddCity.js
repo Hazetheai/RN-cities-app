@@ -5,7 +5,7 @@ export default class AddCity extends React.Component {
   render() {
     return (
       <View>
-        <Text>Hello, from AddCity</Text>
+        <Text>Hello, from Add City</Text>
       </View>
     );
   }

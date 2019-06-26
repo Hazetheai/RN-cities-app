@@ -5,7 +5,7 @@ export default class Cities extends React.Component {
   render() {
     return (
       <View>
-        <Text>Hello, from city</Text>
+        <Text>Hello, from cities</Text>
       </View>
     );
   }

@@ -3,12 +3,13 @@ import React from "react";
 import AddCity from "./AddCity/AddCity";
 import Cities from "./Cities/Cities";
 import City from "./Cities/City";
+import { colors } from "./theme";
 
 import {
   createStackNavigator,
-  createBottomTabNavigator
+  createBottomTabNavigator,
+  createAppContainer
 } from "react-navigation";
-import { colors } from "./theme";
 
 const CitiesNav = createStackNavigator(
   {
@@ -30,4 +31,6 @@ const Tabs = createBottomTabNavigator({
   AddCity: { screen: AddCity }
 });
 
-export default Tabs;
+const AppNavCont = createAppContainer(Tabs);
+
+export default AppNavCont;
