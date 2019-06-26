@@ -17,7 +17,7 @@ const CitiesNav = createStackNavigator(
     City: { screen: City }
   },
   {
-    navigationOptions: {
+    defaultNavigationOptions: {
       headerStyle: {
         backgroundColor: colors.primary
       },
