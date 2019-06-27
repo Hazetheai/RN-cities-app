@@ -35,8 +35,6 @@ export default class AddCity extends React.Component {
     });
   };
   render() {
-    console.log("Add Cities props", this.props);
-
     return (
       <View style={styles.container}>
         <Text style={styles.heading}>Cities App</Text>

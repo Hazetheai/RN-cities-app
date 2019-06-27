@@ -29,7 +29,9 @@ export default class Cities extends React.Component {
     return (
       <ScrollView>
         <View>
-          {!city.locations.length && <CenterMessage message="No Cities" />}
+          {!this.props.screenProps.cities && (
+            <CenterMessage message="No Cities" />
+          )}
           {this.props.screenProps.cities.map((city, view) => (
             <View key={city.id}>
               <TouchableWithoutFeedback onPress={() => this.viewCity(city)}>

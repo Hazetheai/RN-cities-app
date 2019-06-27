@@ -47,12 +47,12 @@ export default class City extends React.Component {
   };
   render() {
     const { city } = this.props.navigation.state.params;
-
+    console.log(city);
     return (
       <View style={{ flex: 1 }}>
         {!city.locations.length && <CenterMessage message="No Locations" />}
         {city.locations.map((location, index) => (
-          <View style={styles.locationContainer}>
+          <View key={index} style={styles.locationContainer}>
             <Text style={styles.locationName}>{location.name}</Text>
             <Text style={styles.locationInfo}>{location.info}</Text>
           </View>
