@@ -19,9 +19,10 @@ export default class App extends React.Component {
   };
 
   componentDidMount = async () => {
+    console.log("Mounting");
     try {
       const cities = await AsyncStorage.getItem(key);
-      this.setState({ cities: JSON.parse(cities) });
+      cities.length > 0 ? this.setState({ cities: JSON.parse(cities) }) : "";
     } catch (e) {
       console.log("Getting Error:", e);
     }
@@ -31,9 +32,7 @@ export default class App extends React.Component {
     try {
       const cities = this.state.cities;
       cities.push(city);
-      await AsyncStorage.setItem(key, JSON.stringify(cities)).catch(error =>
-        console.log("Setting Error:", error)
-      );
+      await AsyncStorage.setItem(key, JSON.stringify(cities));
       this.setState({ cities });
     } catch (e) {
       console.log("It's all gone to shit! Read more here ---> ", e);
