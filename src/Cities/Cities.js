@@ -21,7 +21,7 @@ export default class Cities extends React.Component {
 
   viewCity = city => {
     this.props.navigation.navigate("City", { city });
-    console.log("City", city);
+    // console.log("City", city);
   };
 
   render() {

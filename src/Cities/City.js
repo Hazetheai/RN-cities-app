@@ -47,7 +47,7 @@ export default class City extends React.Component {
   };
   render() {
     const { city } = this.props.navigation.state.params;
-    console.log(city);
+    // console.log(city);
     return (
       <View style={{ flex: 1 }}>
         {!city.locations.length && <CenterMessage message="No Locations" />}
